@@ -55,4 +55,9 @@ class SmartyPantsTest < Redcarpet::TestCase
     rd = @pants.render(%(<p>'First' and 'second' and 'third'</p>))
     assert_equal %(<p>&lsquo;First&rsquo; and &lsquo;second&rsquo; and &lsquo;third&rsquo;</p>), rd
   end
+
+  def test_that_smart_converts_copyright
+    rd = @pants.render(%(<p>501(c)</p>))
+    assert_equal %(<p>501&copy;</p>), rd
+  end
 end
