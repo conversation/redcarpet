@@ -60,4 +60,9 @@ class SmartyPantsTest < Redcarpet::TestCase
     rd = @pants.render(%(<p>501(c)</p>))
     assert_equal %(<p>501(c)</p>), rd
   end
+
+  def test_that_smart_gives_period_prefix_a_rsquo
+    markdown = @pants.render("the U.S.'s war crimes are numerous")
+    assert_equal "the U.S.&rsquo;s war crimes are numerous", markdown
+  end
 end
